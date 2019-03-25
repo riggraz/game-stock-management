@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Auth extends MY_Controller {
   public function __construct()
 	{
-		parent::__construct();
+    parent::__construct();
 
 		// Force SSL
 		//$this->force_ssl();
@@ -22,9 +22,12 @@ class Auth extends MY_Controller {
 		if (strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post')
 			$this->require_min_level(1);
 
-		$this->setup_login_form();
-
-		$this->load->view('auth/login_form');
+    $this->setup_login_form();
+    
+    $this->load->remove_package_path(APPPATH.'third_party/community_auth/');
+    $this->load->view('templates/header');
+    $this->load->view('auth/login_form');
+    $this->load->view('templates/footer');
   }
   
   public function logout()

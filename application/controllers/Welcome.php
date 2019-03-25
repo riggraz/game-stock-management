@@ -13,5 +13,6 @@ class Welcome extends MY_Controller {
 		$data['logged_in'] = $this->is_logged_in() ? 'yes' : 'no';
 		$this->load->view('templates/header');
 		$this->load->view('welcome_message', $data);
+		$this->load->view('templates/footer');
 	}
 }
