@@ -3,10 +3,23 @@
 <html>
   <head>
     <title>Videogame stock</title>
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" />
-    <script src="<?php echo base_url('assets/js/jquery-3.3.1.min.js'); ?>" defer></script>
-    <script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>" defer></script>
+
+    <?php
+      if (isset($css_files))
+      {
+        foreach($css_files as $file): ?>
+	        <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
+    <?php endforeach;
+      }
+      else
+      { ?>
+        <link rel="stylesheet" href="<?php echo base_url('assets/grocery_crud/themes/tablestrap/css/bootstrap.min.css'); ?>" />
+      <?php } ?>
+
+    <script defer src="<?php echo base_url('assets/js/jquery-3.3.1.min.js'); ?>"></script>
+    <script defer src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
   </head>
+
   <body class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
       <a class="navbar-brand" href="<?php echo base_url(''); ?>">
@@ -21,7 +34,7 @@
             <a class="nav-link" href="<?php echo base_url(''); ?>">Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Admin</a>
+            <a class="nav-link" href="<?php echo base_url('users'); ?>">Admin</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('logout'); ?>">Logout</a>

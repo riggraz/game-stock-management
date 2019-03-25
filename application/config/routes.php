@@ -8,3 +8,6 @@ $route['translate_uri_dashes'] = FALSE;
 // authentication
 $route[LOGIN_PAGE] = 'auth/login';
 $route['logout'] = 'auth/logout';
+
+// users
+$route['users'] = 'users/index';
