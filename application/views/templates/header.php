@@ -31,17 +31,21 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <?php if (isset($auth_role)) { ?>
       <div class="navbar-collapse collapse" id="navbarSupportedContent">
         <ul class="navbar-nav nav">
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(''); ?>">Products</a>
           </li>
+          <?php if ($auth_role === 'admin') { ?>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('users'); ?>">Admin</a>
           </li>
+          <?php } ?>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('logout'); ?>">Logout</a>
           </li>
         </ul>
       </div>
+      <?php } ?>
     </nav>
