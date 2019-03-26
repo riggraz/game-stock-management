@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Users extends MY_Controller {
   public function __construct()
@@ -15,7 +15,7 @@ class Users extends MY_Controller {
 
 	private function _example_output($output = null)
 	{
-    $this->load->view('templates/header.php',(array) $output);
+    $this->load->view('templates/header.php', (array) $output);
     $this->load->view('users/crud.php', (array) $output);
     $this->load->view('templates/footer.php');
 	}
@@ -37,7 +37,7 @@ class Users extends MY_Controller {
 
       $crud->add_fields('user_id', 'username', 'email', 'auth_level', 'passwd', 'created_at');
       $crud->edit_fields('user_id', 'username', 'email', 'auth_level', 'created_at');
-      // the following 2 fields are hidden because they are automatically generated
+      // the following 2 fields are hidden because their values are automatically generated
       $crud->change_field_type('user_id', 'invisible');
       $crud->change_field_type('created_at', 'invisible');
 
@@ -50,7 +50,10 @@ class Users extends MY_Controller {
       $crud->required_fields('username', 'passwd', 'auth_level');
       $crud->unique_fields(array('username', 'email'));
 
-      // $crud->set_rules();
+      $crud->set_rules('username', 'Username', 'required|alpha_dash|min_length[4]|max_length[12]');
+      $crud->set_rules('email', 'Email', 'valid_email');
+      $crud->set_rules('auth_level', 'Role', 'required|integer|in_list[6,9]');
+      $crud->set_rules('passwd', 'Password', 'required|alpha_dash|min_length[8]|max_length[72]');
 
 			$crud->unset_print();
       $crud->unset_export();
@@ -75,7 +78,6 @@ class Users extends MY_Controller {
     $this->load->model('examples/examples_model');
 
     $post_array['user_id'] = $this->examples_model->get_unused_id();
-    // set email to null
     $post_array['passwd'] = $this->authentication->hash_passwd($post_array['passwd']);
     $post_array['created_at'] = date('Y-m-d H:i:s');
 
