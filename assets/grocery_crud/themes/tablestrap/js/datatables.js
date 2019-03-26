@@ -191,7 +191,7 @@ function loadDataTable(this_datatables) {
 			add_edit_button_listener();
             $('.DTTT_button_text').attr('href', export_url);
 		},
-		"sDom": '<"table-responsive"<"spacer visible-xs-block"><"col-md-3"l><"col-md-9 hidden-xs"f>t><"panel-footer"ip>',
+		"sDom": '<"table-responsive"<"spacer visible-xs-block"><"col-md-3"l><"col-md-9"f>t><"panel-footer"ip>',
 	    "oTableTools": {
 	        "sSwfPath": base_url+"assets/grocery_crud/themes/datatables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf"
 	    }

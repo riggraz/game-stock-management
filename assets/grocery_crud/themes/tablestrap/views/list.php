@@ -30,7 +30,7 @@
 				<?php if(!$unset_read){?>
 					<a href="<?php echo $row->read_url?>" class="edit_button btn btn-xs btn-info" role="button">
 						<span class="glyphicon glyphicon-info-sign"></span>
-						<?php echo $this->l('list_view');?>
+						<?php //echo $this->l('list_view');?>
 					</a>
 				<?php }?>
 
@@ -42,7 +42,7 @@
                 <?php }?>
 
 				<?php if(!$unset_edit){?>
-					<a href="<?php echo $row->edit_url?>" class="edit_button btn btn-xs btn-info hidden-xs" role="button">
+					<a href="<?php echo $row->edit_url?>" class="edit_button btn btn-xs btn-info" role="button">
 						<span class="glyphicon glyphicon-pencil"></span>
 						<?php //echo $this->l('list_edit'); ?>
 					</a>
@@ -50,7 +50,7 @@
 
 				<?php if(!$unset_delete){?>
 					<a onclick = "javascript: return delete_row('<?php echo $row->delete_url?>', '<?php echo $num_row?>')"
-						href="javascript:void(0)" class="delete_button btn btn-xs btn-danger hidden-xs" role="button">
+						href="javascript:void(0)" class="delete_button btn btn-xs btn-danger" role="button">
 						<span class="glyphicon glyphicon-trash"></span>
 						<?php //echo $this->l('list_delete'); ?>
 					</a>

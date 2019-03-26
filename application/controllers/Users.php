@@ -33,7 +33,7 @@ class Users extends MY_Controller {
       $crud->set_theme('tablestrap');
       $crud->set_subject('User');
 
-      $crud->columns('user_id', 'username', 'email', 'auth_level');
+      $crud->columns('username', 'email', 'auth_level');
 
       $crud->add_fields('user_id', 'username', 'email', 'auth_level', 'passwd', 'created_at');
       $crud->edit_fields('user_id', 'username', 'email', 'auth_level', 'created_at');
@@ -44,7 +44,7 @@ class Users extends MY_Controller {
       $crud
         ->display_as('username', 'Username')
         ->display_as('email', 'Email')
-        ->display_as('auth_level', 'Role (6=employee, 9=admin)')
+        ->display_as('auth_level', 'Role')
         ->display_as('passwd', 'Password');
       
       $crud->required_fields('username', 'passwd', 'auth_level');
