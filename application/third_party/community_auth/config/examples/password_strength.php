@@ -45,7 +45,7 @@ $config['max_chars_for_password'] = 0;
 | Set to 0 to require none.
 */
 
-$config['min_digits_for_password'] = 1;
+$config['min_digits_for_password'] = 0;
 
 /*
 | -----------------------------------------------------------------
@@ -55,7 +55,7 @@ $config['min_digits_for_password'] = 1;
 | Set to 0 to require none.
 */
 
-$config['min_lowercase_chars_for_password'] = 1;
+$config['min_lowercase_chars_for_password'] = 0;
 
 /*
 | -----------------------------------------------------------------
@@ -65,7 +65,7 @@ $config['min_lowercase_chars_for_password'] = 1;
 | Set to 0 to require none.
 */
 
-$config['min_uppercase_chars_for_password'] = 1;
+$config['min_uppercase_chars_for_password'] = 0;
 
 /*
 | -----------------------------------------------------------------
