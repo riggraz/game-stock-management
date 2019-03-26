@@ -24,26 +24,39 @@
   </head>
 
   <body class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-      <a class="navbar-brand" href="<?php echo base_url(''); ?>">
-        <h1>Videogame stock</h1>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="navbar navbar-default" style="margin-top: 8px;">
+      <div class="navbar-header">
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<?php echo base_url(''); ?>">
+          <span style="font-size: 3rem;">Videogame stock</span>
+        </a>
+      </div>
+      
       <?php if (isset($auth_role)) { ?>
-      <div class="navbar-collapse collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav nav">
-          <li class="nav-item">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav navbar-right">
+          <li class="nav-item <?= $this->router->fetch_class() == 'products' ? 'active':''; ?>">
             <a class="nav-link" href="<?php echo base_url(''); ?>">Products</a>
           </li>
           <?php if ($auth_role === 'admin') { ?>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('users'); ?>">Admin</a>
+          <li class="nav-item <?= $this->router->fetch_class() == 'users' ? 'active':''; ?>">
+            <a class="nav-link" href="<?php echo base_url('users'); ?>">Manage users</a>
           </li>
           <?php } ?>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('logout'); ?>">Logout</a>
+          <li class="dropdown <?= $this->router->fetch_class() == 'auth' ? 'active':''; ?>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <?php echo $auth_username; ?> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Edit your profile</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="<?php echo site_url('logout'); ?>">Logout</a></li>
+            </ul>
           </li>
         </ul>
       </div>

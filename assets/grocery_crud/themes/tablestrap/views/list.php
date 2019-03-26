@@ -42,7 +42,7 @@
                 <?php }?>
 
 				<?php if(!$unset_edit){?>
-					<a href="<?php echo $row->edit_url?>" class="edit_button btn btn-xs btn-info" role="button">
+					<a href="<?php echo $row->edit_url?>" class="edit_button btn btn-xs btn-warning" role="button">
 						<span class="glyphicon glyphicon-pencil"></span>
 						<?php //echo $this->l('list_edit'); ?>
 					</a>

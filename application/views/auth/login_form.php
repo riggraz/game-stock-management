@@ -1,23 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-if (!isset($optional_login))
-{
-	echo '<h2>Login</h2>';
-}
-
 if (!isset($on_hold_message))
 {
 	if (isset($login_error_mesg))
 	{
 		echo '
-			<div class="card bg-danger text-white mb-3">
-				<div class="card-header font-weight-bold p-2">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
 					Login Error #' . $this->authentication->login_errors_count . '/' . config_item('max_allowed_attempts') . '
 				</div>
-				<div class="card-body p-2">
-					<p class="card-text">Invalid Username, Email Address, or Password.</p>
-				</div>
+				<div class="panel-body">Invalid Username, Email Address, or Password.</div>
 			</div>
 		';
 	}
@@ -25,14 +18,14 @@ if (!isset($on_hold_message))
 	if ($this->input->get(AUTH_LOGOUT_PARAM))
 	{
 		echo '
-			<div class="card bg-success text-white mb-3">
-				<div class="card-header font-weight-bold p-2"><b>Log out</b></div>
-				<div class="card-body p-2">
-					<p class="card-text">You have successfully logged out.</p>
-				</div>
+			<div class="panel panel-success">
+				<div class="panel-heading">Log out</div>
+				<div class="panel-body">You have successfully logged out.</div>
 			</div>
 		';
 	}
+
+	echo '<h2>Login</h2>';
 
 	echo form_open($login_url, ['class' => 'std-form']);
 ?>
