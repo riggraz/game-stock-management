@@ -75,9 +75,10 @@ class Users extends MY_Controller {
   
   public function before_insert($post_array)
   {
-    $this->load->model('examples/examples_model');
+    $this->load->remove_package_path(APPPATH.'third_party/community_auth/');
+    $this->load->model('users_model');
 
-    $post_array['user_id'] = $this->examples_model->get_unused_id();
+    $post_array['user_id'] = $this->users_model->get_unused_id();
     $post_array['passwd'] = $this->authentication->hash_passwd($post_array['passwd']);
     $post_array['created_at'] = date('Y-m-d H:i:s');
 

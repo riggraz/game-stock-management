@@ -41,7 +41,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav nav navbar-right">
           <li class="nav-item <?= $this->router->fetch_class() == 'products' ? 'active':''; ?>">
-            <a class="nav-link" href="<?php echo base_url(''); ?>">Products</a>
+            <a class="nav-link" href="<?php echo base_url('products'); ?>">Products</a>
           </li>
           <?php if ($auth_role === 'admin') { ?>
           <li class="nav-item <?= $this->router->fetch_class() == 'users' ? 'active':''; ?>">
