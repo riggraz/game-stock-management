@@ -33,25 +33,28 @@ class Users extends MY_Controller {
       $crud->set_theme('tablestrap');
       $crud->set_subject('User');
 
-      $crud->columns('username', 'email', 'auth_level');
+      $crud->columns('username', 'first_name', 'last_name', 'auth_level');
 
-      $crud->add_fields('user_id', 'username', 'email', 'auth_level', 'passwd', 'created_at');
-      $crud->edit_fields('user_id', 'username', 'email', 'auth_level', 'created_at');
+      $crud->add_fields('user_id', 'username', 'first_name', 'last_name', 'auth_level', 'passwd', 'created_at');
+      $crud->edit_fields('user_id', 'username', 'first_name', 'last_name', 'auth_level', 'created_at');
       // the following 2 fields are hidden because their values are automatically generated
       $crud->change_field_type('user_id', 'invisible');
       $crud->change_field_type('created_at', 'invisible');
 
       $crud
         ->display_as('username', 'Username')
+        ->display_as('first_name', 'First name')
+        ->display_as('last_name', 'Last name')
         ->display_as('email', 'Email')
         ->display_as('auth_level', 'Role')
         ->display_as('passwd', 'Password');
       
-      $crud->required_fields('username', 'passwd', 'auth_level');
+      $crud->required_fields('username', 'first_name', 'last_name', 'passwd', 'auth_level');
       $crud->unique_fields(array('username', 'email'));
 
       $crud->set_rules('username', 'Username', 'required|alpha_dash|min_length[4]|max_length[12]');
-      $crud->set_rules('email', 'Email', 'valid_email');
+      $crud->set_rules('first_name', 'First name', 'required|alpha');
+      $crud->set_rules('last_name', 'Last name', 'required|alpha');
       $crud->set_rules('auth_level', 'Role', 'required|integer|in_list[6,9]');
       $crud->set_rules('passwd', 'Password', 'required|callback_check_password_strength');
 
@@ -63,6 +66,8 @@ class Users extends MY_Controller {
       $crud->unset_jquery();
 
       $crud->callback_before_insert(array($this, 'before_insert'));
+      $crud->callback_field('auth_level', array($this, 'auth_level_field'));
+      $crud->callback_field('passwd', array($this, 'passwd_field'));
 
       $output = $crud->render();
 
@@ -83,6 +88,21 @@ class Users extends MY_Controller {
     $post_array['created_at'] = date('Y-m-d H:i:s');
 
     return $post_array;
+  }
+
+  public function auth_level_field($value = '')
+  {
+    return '
+      <select name="auth_level" class="form-control">
+        <option value="6" ' . (($value == 6) ? 'selected' : '') . '>Employee</option>
+        <option value="9" ' . (($value == 9) ? 'selected' : '') . '>Administrator</option>
+      </select>
+    ';
+  }
+
+  public function passwd_field($value = '')
+  {
+    return '<input type="password" name="passwd" class="form-control" value="' . $value . '" />';
   }
 
   public function check_password_strength($password)

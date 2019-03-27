@@ -34,33 +34,32 @@ class Products extends MY_Controller {
       $crud->set_theme('tablestrap');
       $crud->set_subject('Product');
 
-      $crud->columns('image_url', 'name', 'price', 'quantity', 'platform');
+      $crud->columns('image_url', 'name', 'platform', 'quantity', 'price');
 
-      $crud->fields('product_id', 'name', 'price', 'quantity', 'developer', 'publisher', 'platform', 'description', 'image_url', 'created_at');
-      $crud->set_field_upload('image_url','assets/uploads/products_images');
+      $crud->fields('product_id', 'name', 'platform', 'quantity', 'price', 'developer', 'publisher', 'description', 'image_url', 'created_at');
+      $crud->set_field_upload('image_url', 'assets/uploads/products_images');
       // the following 2 fields are hidden because their values are automatically generated
       $crud->change_field_type('product_id', 'invisible');
       $crud->change_field_type('created_at', 'invisible');
 
       $crud
         ->display_as('name', 'Name')
-        ->display_as('price', 'Price')
+        ->display_as('platform', 'Platform')
         ->display_as('quantity', 'Quantity')
+        ->display_as('price', 'Price (£)')
         ->display_as('developer', 'Developer')
         ->display_as('publisher', 'Publisher')
-        ->display_as('platform', 'Platform')
         ->display_as('image_url', 'Cover')
         ->display_as('created_at', 'Created at');
       
-      $crud->required_fields('name', 'price');
-      $crud->unique_fields(array('name'));
+      $crud->required_fields('name', 'platform', 'price');
 
-      $crud->set_rules('name', 'Name', 'required|alpha_numeric_spaces|min_length[4]|max_length[255]');
-      $crud->set_rules('price', 'Price', 'required|numeric');
+      $crud->set_rules('name', 'Name', 'required|alpha_numeric_spaces|min_length[2]|max_length[255]');
+      $crud->set_rules('platform', 'Platform', 'required|alpha_numeric|max_length[255]');
       $crud->set_rules('quantity', 'Quantity', 'integer|greater_than_equal_to[0]');
+      $crud->set_rules('price', 'Price', 'required|numeric');
       $crud->set_rules('developer', 'Developer', 'alpha_numeric_spaces|max_length[255]');
       $crud->set_rules('publisher', 'Publisher', 'alpha_numeric_spaces|max_length[255]');
-      $crud->set_rules('platform', 'Platform', 'alpha_numeric_spaces|max_length[255]');
 
 			$crud->unset_print();
       $crud->unset_export();
@@ -71,7 +70,8 @@ class Products extends MY_Controller {
       $crud->unset_jquery();
 
       $crud->callback_before_insert(array($this, 'before_insert'));
-      $crud->callback_before_update(array($this, 'before_update'));
+      $crud->callback_field('quantity', array($this, 'quantity_field'));
+      $crud->callback_field('price', array($this, 'price_field'));
 
       $output = $crud->render();
 
@@ -91,5 +91,15 @@ class Products extends MY_Controller {
     $post_array['created_at'] = date('Y-m-d H:i:s');
 
     return $post_array;
+  }
+
+  public function quantity_field($quantity)
+  {
+    return '<input type="number" name="quantity" class="form-control" step="1" value="' . $quantity . '" />';
+  }
+
+  public function price_field($price)
+  {
+    return '<input type="number" name="price" class="form-control" step="1" value="' . $price . '" />';
   }
 }
