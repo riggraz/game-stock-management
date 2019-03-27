@@ -32,8 +32,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?php echo base_url(''); ?>">
-          <span style="font-size: 3rem;">Videogame stock</span>
+        <a class="navbar-brand" href="<?php echo base_url(''); ?>" style="padding: 10px;">
+          <span><img src="<?php echo base_url('assets/images/logo.png'); ?>" width="36" height="36" alt="brand" /></span>
+          <span style="font-size: 3rem; font-weight: bold;">exgames stock</span>
         </a>
       </div>
       
