@@ -32,10 +32,10 @@ $config['login_rules'] = [
 		'rules' => [
             'trim',
             'required',
-            [ 
-                '_check_password_strength', 
-                [ $CI->validation_callables, '_check_password_strength' ] 
-            ]
+            // [ 
+            //     '_check_password_strength', 
+            //     [ $CI->validation_callables, '_check_password_strength' ] 
+            // ]
         ]
 	]
 ];

@@ -7,7 +7,7 @@ class Users extends MY_Controller {
 
 		$this->load->database();
 		$this->load->helper('url');
-		$this->load->helper('form');
+    $this->load->helper('form');
 		$this->load->library('form_validation');
 
     $this->load->library('grocery_CRUD');
@@ -53,7 +53,7 @@ class Users extends MY_Controller {
       $crud->set_rules('username', 'Username', 'required|alpha_dash|min_length[4]|max_length[12]');
       $crud->set_rules('email', 'Email', 'valid_email');
       $crud->set_rules('auth_level', 'Role', 'required|integer|in_list[6,9]');
-      $crud->set_rules('passwd', 'Password', 'required|alpha_dash|min_length[8]|max_length[72]');
+      $crud->set_rules('passwd', 'Password', 'required|callback_check_password_strength');
 
 			$crud->unset_print();
       $crud->unset_export();
@@ -83,6 +83,65 @@ class Users extends MY_Controller {
     $post_array['created_at'] = date('Y-m-d H:i:s');
 
     return $post_array;
+  }
+
+  public function check_password_strength($password)
+  {
+    $min_chars_for_password = 8;
+    $max_chars_for_password = 72;
+    $min_lowercase_chars_for_password = 1;
+    $min_uppercase_chars_for_password = 1;
+    $min_non_alphanumeric_chars_for_password = 1;
+
+    // Password length
+    $max = $max_chars_for_password > 0
+      ? $max_chars_for_password 
+      : '';
+    $regex = '(?=.{' . $min_chars_for_password . ',' . $max . '})';
+    $error = '<li>At least ' . $min_chars_for_password . ' characters</li>';
+
+    if( $max_chars_for_password > 0 )
+      $error .= '<li>Not more than ' . $max_chars_for_password . ' characters</li>';
+    
+    // Lower case letter(s) required
+    if( $min_lowercase_chars_for_password > 0 )
+    {
+      $regex .= '(?=(?:.*[a-z].*){' . $min_lowercase_chars_for_password . ',})';
+      $plural = $min_lowercase_chars_for_password > 1 ? 's' : '';
+      $error .= '<li>' . $min_lowercase_chars_for_password . ' lower case letter' . $plural . '</li>';
+    }
+    
+    // Upper case letter(s) required
+    if( $min_uppercase_chars_for_password > 0 )
+    {
+      $regex .= '(?=(?:.*[A-Z].*){' . $min_uppercase_chars_for_password . ',})';
+      $plural = $min_uppercase_chars_for_password > 1 ? 's' : '';
+      $error .= '<li>' . $min_uppercase_chars_for_password . ' upper case letter' . $plural . '</li>';
+    }
+    
+    // Non-alphanumeric char(s) required
+    if( $min_non_alphanumeric_chars_for_password > 0 )
+    {
+      $regex .= '(?=(?:.*[^a-zA-Z0-9].*){' . $min_non_alphanumeric_chars_for_password . ',})';
+      $plural = $min_non_alphanumeric_chars_for_password > 1 ? 's' : '';
+      $error .= '<li>' . $min_non_alphanumeric_chars_for_password . ' non-alphanumeric character' . $plural . '</li>';
+    }
+    
+    if( preg_match( '/^' . $regex . '.*$/', $password ) )
+    {
+      return TRUE;
+    }
+    
+    $this->form_validation->set_message(
+      'check_password_strength', 
+      '<span class="redfield">Password</span> must contain:
+        <ol>
+          ' . $error . '
+        </ol>
+      </span>'
+    );
+
+    return FALSE;
   }
 
 }
