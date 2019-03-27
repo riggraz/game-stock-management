@@ -68,8 +68,10 @@ class Users extends MY_Controller {
       $crud->callback_before_insert(array($this, 'before_insert'));
       $crud->callback_add_field('auth_level', array($this, 'auth_level_field'));
       $crud->callback_edit_field('auth_level', array($this, 'auth_level_field'));
+      $crud->callback_read_field('auth_level', array($this, 'auth_level_display'));
       $crud->callback_add_field('passwd', array($this, 'passwd_field'));
       $crud->callback_edit_field('passwd', array($this, 'passwd_field'));
+      $crud->callback_column('auth_level', array($this, 'auth_level_display'));
 
       $output = $crud->render();
 
@@ -105,6 +107,12 @@ class Users extends MY_Controller {
   public function passwd_field($value = '')
   {
     return '<input type="password" name="passwd" class="form-control" value="' . $value . '" />';
+  }
+
+  public function auth_level_display($value)
+  {
+    if ($value == 6) return 'Employee';
+    else if ($value == 9) return 'Administrator';
   }
 
   public function check_password_strength($password)
