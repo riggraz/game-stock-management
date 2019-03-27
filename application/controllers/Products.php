@@ -70,8 +70,10 @@ class Products extends MY_Controller {
       $crud->unset_jquery();
 
       $crud->callback_before_insert(array($this, 'before_insert'));
-      $crud->callback_field('quantity', array($this, 'quantity_field'));
-      $crud->callback_field('price', array($this, 'price_field'));
+      $crud->callback_add_field('quantity', array($this, 'quantity_field'));
+      $crud->callback_edit_field('quantity', array($this, 'quantity_field'));
+      $crud->callback_add_field('price', array($this, 'price_field'));
+      $crud->callback_edit_field('price', array($this, 'price_field'));
 
       $output = $crud->render();
 

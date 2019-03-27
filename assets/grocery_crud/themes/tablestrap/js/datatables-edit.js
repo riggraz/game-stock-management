@@ -60,7 +60,7 @@ $(function(){
 								});
 							} else {
 								new PNotify({
-									title: 'Oh No!',
+									title: 'Error',
 									text: data.error_message,
 									type: 'error'
 								});
@@ -68,7 +68,7 @@ $(function(){
 						},
 						error: function(){
 							new PNotify({
-								title: 'Oh No!',
+								title: 'Error',
 								text: data.error_message,
 								type: 'error'
 							});
@@ -77,7 +77,7 @@ $(function(){
 				} else {
 					$('.field_error').removeClass('field_error');
 					new PNotify({
-						title: 'Oh No!',
+						title: 'Error',
 						text: data.error_message,
 						type: 'error'
 					});

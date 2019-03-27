@@ -4,7 +4,7 @@
 	$lang['list_page'] 				= 'Page';
 	$lang['list_paging_of'] 		= 'of';
 	$lang['list_displaying']		= 'Displaying {start} to {end} of {results} items';
-	$lang['list_filtered_from']		= '(filtered from {total_results} total entries)';
+	$lang['list_filtered_from']		= '(filtered)';
 	$lang['list_show_entries']		= 'Show {paging} entries';
 	$lang['list_no_items']			= 'No items to display';
 	$lang['list_zero_entries']		= 'Displaying 0 to 0 of 0 items';

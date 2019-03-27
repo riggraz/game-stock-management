@@ -244,7 +244,7 @@ function delete_row(delete_url , row_id){
 					chosen_table.fnDeleteRow( anSelected[0] );
 				} else {
 					new PNotify({
-						title: 'Oh No!',
+						title: 'Error',
 						text: data.error_message,
 						type: 'error'
 					});

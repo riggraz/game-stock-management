@@ -66,8 +66,10 @@ class Users extends MY_Controller {
       $crud->unset_jquery();
 
       $crud->callback_before_insert(array($this, 'before_insert'));
-      $crud->callback_field('auth_level', array($this, 'auth_level_field'));
-      $crud->callback_field('passwd', array($this, 'passwd_field'));
+      $crud->callback_add_field('auth_level', array($this, 'auth_level_field'));
+      $crud->callback_edit_field('auth_level', array($this, 'auth_level_field'));
+      $crud->callback_add_field('passwd', array($this, 'passwd_field'));
+      $crud->callback_edit_field('passwd', array($this, 'passwd_field'));
 
       $output = $crud->render();
 

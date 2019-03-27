@@ -74,7 +74,7 @@ $(function(){
 								clearForm();
 							} else {
 								new PNotify({
-									title: 'Oh No!',
+									title: 'Error',
 									text: message_insert_error,
 									type: 'error'
 								});
@@ -84,7 +84,7 @@ $(function(){
 				} else {
 					$('.field_error').removeClass('field_error');
 					new PNotify({
-						title: 'Oh No!',
+						title: 'Error',
 						text: data.error_message,
 						type: 'error'
 					});
