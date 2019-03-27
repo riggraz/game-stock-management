@@ -34,7 +34,7 @@ class Products extends MY_Controller {
       $crud->set_theme('tablestrap');
       $crud->set_subject('Product');
 
-      $crud->columns('image_url', 'name', 'price', 'quantity', 'developer', 'publisher', 'platform');
+      $crud->columns('image_url', 'name', 'price', 'quantity', 'platform');
 
       $crud->fields('product_id', 'name', 'price', 'quantity', 'developer', 'publisher', 'platform', 'description', 'image_url', 'created_at');
       $crud->set_field_upload('image_url','assets/uploads/products_images');

@@ -30,21 +30,21 @@
 				<?php if(!$unset_read){?>
 					<a href="<?php echo $row->read_url?>" class="edit_button btn btn-xs btn-info" role="button">
 						<span class="glyphicon glyphicon-info-sign"></span>
-						<?php //echo $this->l('list_view');?>
+						<span class="hidden-xs hidden-sm"><?php echo $this->l('list_view');?></span>
 					</a>
 				<?php }?>
 
-                <?php if(!$unset_clone){?>
-                    <a href="<?php echo $row->clone_url?>" class="edit_button btn btn-xs btn-info hidden-xs" role="button">
-                        <span class="glyphicon glyphicon-duplicate"></span>
-                        <?php echo $this->l('list_clone'); ?>
-                    </a>
-                <?php }?>
+				<?php if(!$unset_clone){?>
+						<a href="<?php echo $row->clone_url?>" class="edit_button btn btn-xs btn-info hidden-xs" role="button">
+								<span class="glyphicon glyphicon-duplicate"></span>
+								<span class="hidden-xs hidden-sm"><?php echo $this->l('list_clone');?></span>
+						</a>
+				<?php }?>
 
 				<?php if(!$unset_edit){?>
 					<a href="<?php echo $row->edit_url?>" class="edit_button btn btn-xs btn-warning" role="button">
 						<span class="glyphicon glyphicon-pencil"></span>
-						<?php //echo $this->l('list_edit'); ?>
+						<span class="hidden-xs hidden-sm"><?php echo $this->l('list_edit');?></span>
 					</a>
 				<?php }?>
 
@@ -52,7 +52,7 @@
 					<a onclick = "javascript: return delete_row('<?php echo $row->delete_url?>', '<?php echo $num_row?>')"
 						href="javascript:void(0)" class="delete_button btn btn-xs btn-danger" role="button">
 						<span class="glyphicon glyphicon-trash"></span>
-						<?php //echo $this->l('list_delete'); ?>
+						<span class="hidden-xs hidden-sm"><?php echo $this->l('list_delete');?></span>
 					</a>
 				<?php }?>
 			</td>
