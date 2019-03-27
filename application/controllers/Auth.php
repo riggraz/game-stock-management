@@ -7,7 +7,8 @@ class Auth extends MY_Controller {
     parent::__construct();
 
 		// Force SSL
-		//$this->force_ssl();
+		if (!getenv('PHP_DEV'))
+			$this->force_ssl();
 
 		// Form and URL helpers always loaded (just for convenience)
 		$this->load->helper('url');
