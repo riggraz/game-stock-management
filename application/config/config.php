@@ -35,7 +35,7 @@ $config['base_url'] = getenv('PHP_DEV') ? 'http://localhost:8888/w3/ecm1417/' : 
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
