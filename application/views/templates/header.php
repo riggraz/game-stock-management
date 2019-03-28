@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>Videogame stock</title>
+    <title>exgames stock</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
     <script defer src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
   </head>
 
-  <body class="container-fluid">
+  <body class="container">
     <nav class="navbar navbar-default" style="margin-top: 8px;">
       <div class="navbar-header">
         <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,9 +32,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?php echo base_url(''); ?>" style="padding: 10px;">
+        <a class="navbar-brand" href="<?php echo base_url(''); ?>" style="padding: 8px;">
           <span><img src="<?php echo base_url('assets/images/logo.png'); ?>" width="36" height="36" alt="brand" /></span>
-          <span style="font-size: 3rem; font-weight: bold;">exgames stock</span>
+          <span style="font-size: 3rem; font-weight: bold; position: relative; top: 4px;">exgames stock</span>
         </a>
       </div>
       

@@ -31,7 +31,7 @@ if (!isset($on_hold_message))
 ?>
 
 	<div class="form-group">
-		<label for="login_string">Username or Email</label>
+		<label for="login_string">Username</label>
 		<input type="text" name="login_string" id="login_string" class="form-control" autofocus maxlength="255" />
 	</div>
 
