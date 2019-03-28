@@ -61,9 +61,6 @@ class Products extends MY_Controller {
       $crud->set_rules('developer', 'Developer', 'alpha_numeric_spaces|max_length[255]');
       $crud->set_rules('publisher', 'Publisher', 'alpha_numeric_spaces|max_length[255]');
 
-			$crud->unset_print();
-      $crud->unset_export();
-      $crud->unset_clone();
       $crud->unset_texteditor('description');
 
       // $crud->unset_bootstrap();
