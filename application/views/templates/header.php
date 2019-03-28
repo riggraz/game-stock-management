@@ -54,8 +54,6 @@
               <?php echo $auth_username; ?> <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Edit your profile</a></li>
-              <li role="separator" class="divider"></li>
               <li><a href="<?php echo site_url('logout'); ?>">Logout</a></li>
             </ul>
           </li>
