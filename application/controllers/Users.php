@@ -68,10 +68,11 @@ class Users extends MY_Controller {
       $crud->callback_before_insert(array($this, 'before_insert'));
       $crud->callback_add_field('auth_level', array($this, 'auth_level_field'));
       $crud->callback_edit_field('auth_level', array($this, 'auth_level_field'));
-      $crud->callback_read_field('auth_level', array($this, 'auth_level_display'));
+      $crud->callback_read_field('auth_level', array($this, 'auth_level_read_field'));
       $crud->callback_add_field('passwd', array($this, 'passwd_field'));
       $crud->callback_edit_field('passwd', array($this, 'passwd_field'));
-      $crud->callback_column('auth_level', array($this, 'auth_level_display'));
+      $crud->callback_read_field('passwd', array($this, 'passwd_read_field'));
+      $crud->callback_column('auth_level', array($this, 'auth_level_read_field'));
 
       $output = $crud->render();
 
@@ -109,7 +110,12 @@ class Users extends MY_Controller {
     return '<input type="password" name="passwd" class="form-control" value="' . $value . '" />';
   }
 
-  public function auth_level_display($value)
+  public function passwd_read_field($value)
+  {
+    return '<label>Not shown for security reasons.</label>';
+  }
+
+  public function auth_level_read_field($value)
   {
     if ($value == 6) return 'Employee';
     else if ($value == 9) return 'Administrator';

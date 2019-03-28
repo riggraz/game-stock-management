@@ -66,12 +66,9 @@ class Products extends MY_Controller {
 
       // $crud->unset_bootstrap();
       $crud->unset_jquery();
+      // $crud->unset_jquery_ui();
 
       $crud->callback_before_insert(array($this, 'before_insert'));
-      $crud->callback_add_field('quantity', array($this, 'quantity_field'));
-      $crud->callback_edit_field('quantity', array($this, 'quantity_field'));
-      $crud->callback_add_field('price', array($this, 'price_field'));
-      $crud->callback_edit_field('price', array($this, 'price_field'));
 
       $output = $crud->render();
 
@@ -91,15 +88,5 @@ class Products extends MY_Controller {
     $post_array['created_at'] = date('Y-m-d H:i:s');
 
     return $post_array;
-  }
-
-  public function quantity_field($quantity)
-  {
-    return '<input type="number" name="quantity" class="form-control" step="1" value="' . $quantity . '" />';
-  }
-
-  public function price_field($price)
-  {
-    return '<input type="number" name="price" class="form-control" step="1" value="' . $price . '" />';
   }
 }

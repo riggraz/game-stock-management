@@ -19,8 +19,8 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/grocery_crud/themes/tablestrap/css/bootstrap.min.css'); ?>" />
       <?php } ?>
 
-    <script defer src="<?php echo base_url('assets/js/jquery-3.3.1.min.js'); ?>"></script>
-    <script defer src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
+      <script defer src="<?php echo base_url('assets/js/jquery-3.3.1.min.js'); ?>"></script>
+      <script defer src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
   </head>
 
   <body class="container">
