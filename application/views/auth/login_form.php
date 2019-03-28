@@ -10,7 +10,7 @@ if (!isset($on_hold_message))
 				<div class="panel-heading">
 					Login Error #' . $this->authentication->login_errors_count . '/' . config_item('max_allowed_attempts') . '
 				</div>
-				<div class="panel-body">Invalid Username, Email Address, or Password.</div>
+				<div class="panel-body">Invalid Username or Password.</div>
 			</div>
 		';
 	}
