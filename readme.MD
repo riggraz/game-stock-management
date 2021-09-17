@@ -3,7 +3,7 @@
 Project for the coursework of University of Exeter's ECM1417 module, year 2018/19.
 
 * **To test the webapp**: go to [this link](https://rg505.altervista.org/) and login using username "rg505" and password "ECM1417pass!".
-* You can also take a look at the [design document](design\ document.pdf).
+* You can also take a look at the [design document](https://github.com/riggraz/game-stock-management/blob/master/design%20document.pdf).
 
 ## Assignment
 
